@@ -1,0 +1,463 @@
+.tools {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 2rem;
+}
+
+.tools-header {
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tools-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.tools-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.tools-navigation {
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tool-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  color: #666;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tool-nav-btn:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  color: #667eea;
+}
+
+.tool-nav-btn.active {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.nav-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.tools-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tool-container {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tool-container h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.tool-container p {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Money Tracker Styles */
+.tracker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.income-section, .expenses-section {
+  background: #f8f9ff;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.income-section h3, .expenses-section h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.5rem;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.input-with-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-with-buttons button {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background: white;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.input-with-buttons button:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.input-with-buttons input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.input-with-buttons input:focus {
+  border-color: #667eea;
+  outline: none;
+}
+
+.total {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #667eea;
+  text-align: center;
+  margin-top: 1rem;
+  color: #333;
+}
+
+.summary {
+  background: #f8f9ff;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.summary-item {
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid;
+}
+
+.summary-item.positive {
+  background: #f0fdf4;
+  border-color: #4ade80;
+  color: #166534;
+}
+
+.summary-item.negative {
+  background: #fef2f2;
+  border-color: #f87171;
+  color: #dc2626;
+}
+
+.summary-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+/* Savings Calculator Styles */
+.savings-form {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.savings-form .input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.savings-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.savings-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.savings-form input:focus {
+  border-color: #667eea;
+  outline: none;
+}
+
+.savings-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: #f8f9ff;
+  border: 2px solid #667eea;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.summary-card h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.progress-visualization {
+  background: #f8f9ff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+.weekly-tracker {
+  background: #f8f9ff;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.week-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.week-item label {
+  font-weight: bold;
+  color: #333;
+}
+
+.week-item input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Budget Simulator Styles */
+.family-budget {
+  background: #f8f9ff;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.budget-section h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.income-display {
+  background: #e8f5e8;
+  border: 2px solid #4ade80;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.income-display h4 {
+  margin: 0;
+  color: #166534;
+  font-size: 1.5rem;
+}
+
+.required-expenses, .optional-expenses {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e0e0e0;
+}
+
+.required-expenses h4, .optional-expenses h4 {
+  color: #333;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.5rem;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+}
+
+.expense-item label {
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.expense-item input {
+  width: 100px;
+  padding: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.expense-item input:focus {
+  border-color: #667eea;
+  outline: none;
+}
+
+.total-required, .remaining-after-required {
+  background: #f0f4ff;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: #333;
+}
+
+.budget-summary {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .tools {
+    padding: 1rem;
+  }
+  
+  .tools-header h1 {
+    font-size: 2rem;
+  }
+  
+  .tools-navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tool-nav-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .tracker-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .savings-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .weeks-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .input-group label {
+    text-align: center;
+  }
+  
+  .input-with-buttons {
+    justify-content: center;
+  }
+  
+  .expense-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .expense-item input {
+    width: 100%;
+    max-width: 150px;
+  }
+}

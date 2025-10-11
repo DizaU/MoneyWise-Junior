@@ -1,0 +1,176 @@
+.header {
+  background: linear-gradient(135deg, #666fea 0%, #6c4ba2 100%);
+  color: rgb(1, 10, 1);
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #ffd700;
+}
+
+.nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: rgb(247, 246, 246);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  background-color: rgba(22, 12, 12, 0.2);
+  font-weight: bold;
+}
+
+.nav-link.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.nav-link.locked:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  transform: none;
+}
+
+.lock-icon {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-left: 0.25rem;
+  color: #ff6b6b;
+}
+
+.nav-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-stats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-name {
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.logout-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.logout-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.stat-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #ffd700;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav {
+    justify-content: center;
+  }
+  
+  .nav-link span {
+    display: none;
+  }
+  
+  .nav-link {
+    padding: 0.5rem;
+  }
+  
+  .user-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .user-name {
+    font-size: 0.8rem;
+  }
+}
