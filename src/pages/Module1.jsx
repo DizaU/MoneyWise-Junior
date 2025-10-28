@@ -259,19 +259,30 @@ function Module1() {
   };
 
   const handleCompleteWorksheet = async () => {
-    const result = await completeWorksheet(1);
-    if (result.success) {
-      console.log(`Worksheet completed! Earned ${result.coinsEarned} coins.`);
-      // Also complete the module if not already completed
-      if (!isModuleCompleted(1)) {
-        await completeModule(1);
+    try {
+      console.log('Starting worksheet completion...');
+      const result = await completeWorksheet(1);
+      console.log('Worksheet completion result:', result);
+      
+      if (result.success) {
+        console.log(`Worksheet completed! Earned ${result.coinsEarned} coins.`);
+        // Also complete the module if not already completed
+        if (!isModuleCompleted(1)) {
+          console.log('Completing module as well...');
+          await completeModule(1);
+        }
+        // Redirect to profile page after worksheet completion
+        console.log('Redirecting to profile page...');
+        navigate('/profile', { 
+          state: { 
+            message: 'Congratulations! You completed Module 1 worksheet! 🎉' 
+          } 
+        });
+      } else {
+        console.log('Worksheet completion failed:', result);
       }
-      // Redirect to profile page after worksheet completion
-      navigate('/profile', { 
-        state: { 
-          message: 'Congratulations! You completed Module 1 worksheet! 🎉' 
-        } 
-      });
+    } catch (error) {
+      console.error('Error completing worksheet:', error);
     }
   };
 
@@ -530,6 +541,17 @@ function Module1() {
             <button onClick={handleCompleteWorksheet} className="btn-primary">
               Submit Worksheet
               <CheckCircle className="btn-icon" />
+            </button>
+            <button 
+              onClick={() => navigate('/profile', { 
+                state: { 
+                  message: 'Test redirect message! 🎉' 
+                } 
+              })}
+              className="btn-secondary"
+              style={{ marginLeft: '10px' }}
+            >
+              Test Redirect
             </button>
           </div>
         </div>

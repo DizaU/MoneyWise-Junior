@@ -110,14 +110,27 @@ export function ProgressProvider({ children }) {
     
     try {
       const result = await addCompletedWorksheet(currentUser.uid, worksheetId);
+      console.log('Firebase result:', result);
+      
+      // Always return success if the operation completed without error
+      // Even if no coins were earned (already completed), it's still a success
       if (result.coinsEarned > 0) {
-        // Update local state
+        // Update local state only if coins were earned (new completion)
         setUserProgress(prev => ({
           ...prev,
           completedWorksheets: [...prev.completedWorksheets, worksheetId],
           coins: result.newCoins
         }));
+      } else {
+        // If already completed, just ensure it's in the local state
+        setUserProgress(prev => ({
+          ...prev,
+          completedWorksheets: prev.completedWorksheets.includes(worksheetId) 
+            ? prev.completedWorksheets 
+            : [...prev.completedWorksheets, worksheetId]
+        }));
       }
+      
       return { success: true, coinsEarned: result.coinsEarned };
     } catch (err) {
       console.error('Error completing worksheet:', err);

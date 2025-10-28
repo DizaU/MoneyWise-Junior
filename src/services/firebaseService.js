@@ -116,9 +116,13 @@ export async function addCompletedModule(userId, moduleId) {
         
         console.log(`Module ${moduleId} completed! Earned ${coinsEarned} coins.`);
         return { coinsEarned, newCoins };
+      } else {
+        console.log(`Module ${moduleId} already completed.`);
+        return { coinsEarned: 0, newCoins: data.coins || 0 };
       }
     }
-    return { coinsEarned: 0, newCoins: data?.coins || 0 };
+    console.log('User document does not exist');
+    return { coinsEarned: 0, newCoins: 0 };
   } catch (error) {
     console.error('Error adding completed module:', error);
     throw error;
@@ -148,9 +152,13 @@ export async function addCompletedWorksheet(userId, worksheetId) {
         
         console.log(`Worksheet ${worksheetId} completed! Earned ${coinsEarned} coins.`);
         return { coinsEarned, newCoins };
+      } else {
+        console.log(`Worksheet ${worksheetId} already completed.`);
+        return { coinsEarned: 0, newCoins: data.coins || 0 };
       }
     }
-    return { coinsEarned: 0, newCoins: data?.coins || 0 };
+    console.log('User document does not exist');
+    return { coinsEarned: 0, newCoins: 0 };
   } catch (error) {
     console.error('Error adding completed worksheet:', error);
     throw error;

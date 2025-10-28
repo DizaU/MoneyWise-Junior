@@ -1,10 +1,13 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CheckCircle, ArrowRight, ArrowLeft, Smartphone, Bitcoin, Zap, BookOpen } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { CheckCircle, ArrowRight, ArrowLeft, Smartphone, Bitcoin, Zap, BookOpen, AlertCircle } from 'lucide-react';
+import { useProgress } from '../contexts/ProgressContext';
 import './Module.css';
 
-function Module4({ userProgress, setUserProgress }) {
+function Module4() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { userProgress, completeModule, completeWorksheet, isModuleCompleted, isWorksheetCompleted } = useProgress();
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
@@ -12,6 +15,16 @@ function Module4({ userProgress, setUserProgress }) {
   const [worksheetAnswers, setWorksheetAnswers] = useState({});
   const [debateChoice, setDebateChoice] = useState(null);
   const [futureDesign, setFutureDesign] = useState('');
+  const [redirectMessage, setRedirectMessage] = useState('');
+
+  // Check for redirect message from navigation
+  useEffect(() => {
+    if (location.state?.message) {
+      setRedirectMessage(location.state.message);
+      // Clear the message after 5 seconds
+      setTimeout(() => setRedirectMessage(''), 5000);
+    }
+  }, [location.state]);
 
   const sections = [
     {
@@ -293,29 +306,39 @@ function Module4({ userProgress, setUserProgress }) {
     }));
   };
 
-  const completeModule = () => {
-    if (!userProgress.completedModules.includes(4)) {
-      setUserProgress(prev => ({
-        ...prev,
-        completedModules: [...prev.completedModules, 4],
-        coins: prev.coins + 100,
-        badges: [...prev.badges, "Future Finance Expert"]
-      }));
+  const handleCompleteModule = async () => {
+    const result = await completeModule(4);
+    if (result.success) {
+      console.log(`Module completed! Earned ${result.coinsEarned} coins.`);
     }
   };
 
-  const completeWorksheet = () => {
-    if (!userProgress.completedWorksheets.includes(4)) {
-      setUserProgress(prev => ({
-        ...prev,
-        completedWorksheets: [...prev.completedWorksheets, 4],
-        completedModules: [...prev.completedModules, 4],
-        coins: prev.coins + 150,
-        badges: [...prev.badges, "Future Finance Expert", "Worksheet Master"]
-      }));
+  const handleCompleteWorksheet = async () => {
+    try {
+      console.log('Starting worksheet completion...');
+      const result = await completeWorksheet(4);
+      console.log('Worksheet completion result:', result);
+      
+      if (result.success) {
+        console.log(`Worksheet completed! Earned ${result.coinsEarned} coins.`);
+        // Also complete the module if not already completed
+        if (!isModuleCompleted(4)) {
+          console.log('Completing module as well...');
+          await completeModule(4);
+        }
+        // Redirect to profile page after worksheet completion
+        console.log('Redirecting to profile page...');
+        navigate('/profile', { 
+          state: { 
+            message: 'Congratulations! You completed Module 4 worksheet! 🎉' 
+          } 
+        });
+      } else {
+        console.log('Worksheet completion failed:', result);
+      }
+    } catch (error) {
+      console.error('Error completing worksheet:', error);
     }
-    // Redirect to progress page after worksheet completion
-    navigate('/profile');
   };
 
   const nextSection = () => {
@@ -619,7 +642,7 @@ function Module4({ userProgress, setUserProgress }) {
               <ArrowLeft className="btn-icon" />
               Back to Quiz
             </button>
-            <button onClick={completeWorksheet} className="btn-primary">
+            <button onClick={handleCompleteWorksheet} className="btn-primary">
               Submit Worksheet
               <CheckCircle className="btn-icon" />
             </button>
@@ -669,7 +692,7 @@ function Module4({ userProgress, setUserProgress }) {
               Take Worksheet Assessment
               <BookOpen className="btn-icon" />
             </button>
-            <button onClick={completeModule} className="btn-primary">
+            <button onClick={handleCompleteModule} className="btn-primary">
               Complete Module
               <CheckCircle className="btn-icon" />
             </button>
@@ -681,6 +704,12 @@ function Module4({ userProgress, setUserProgress }) {
 
   return (
     <div className="module">
+      {redirectMessage && (
+        <div className="redirect-message">
+          <AlertCircle className="alert-icon" />
+          <span>{redirectMessage}</span>
+        </div>
+      )}
       <div className="module-header">
         <h1>Module 4: The Future of Money</h1>
         <p>Explore digital payments, cryptocurrency, and the future of finance.</p>
